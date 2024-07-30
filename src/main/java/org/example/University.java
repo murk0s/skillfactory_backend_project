@@ -1,16 +1,11 @@
 package org.example;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Setter;
-
 import java.util.ArrayList;
 
-@Setter
 public class University
 {
     String id, fullName, shortName;
-    @Setter(AccessLevel.PUBLIC) int yearOfFoundation;
+    int yearOfFoundation;
     StudyProfile mainProfile;
 
     private static ArrayList <University> universityList = new ArrayList<University>();
