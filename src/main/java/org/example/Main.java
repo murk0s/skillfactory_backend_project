@@ -1,34 +1,30 @@
 package org.example;
 
+import org.example.enums.StudentComparatorEnum;
+import org.example.enums.UniversityComparatorEnum;
+import org.example.model.Student;
+import org.example.model.University;
+import org.example.tools.ComparatorTool;
+import org.example.tools.ReadFile;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        University agtu = new University("01", "Астраханский Государственный Технический Университет", "АГТУ", StudyProfile.TECHNIC, 1978);
-        University agma = new University("02", "Астраханская Государственная Медицинская Академия", "АГМА", StudyProfile.MEDICINE, 1970);
-        University akvt = new University("03", "Астраханский Колледж Вычислительной Техники", "АКВТ", StudyProfile.PROGRAMMING, 1980);
+        ArrayList <University> universities = ReadFile.getUniversities();
+        ArrayList <Student> students = ReadFile.getStudents(); //new ArrayList<Student>();
 
-        ArrayList <Student> students = new ArrayList<Student>();
-        students.add(new Student("Иванов Иван Иванович", agtu.getId(), 1, 0));
-        students.add(new Student("Петров Петр Иванович", agtu.getId(), 1, 0));
-        students.add(new Student("Сидоров Арсений Игнатович", agtu.getId(), 1, 0));
-        students.add(new Student("Попов Алексей Владиславович", agtu.getId(), 1, 0));
-
-        students.add(new Student("Корсаков Сергей Сергеевич", agma.getId(), 1, 0));
-        students.add(new Student("Павлов Иван Петрович", agma.getId(), 1, 0));
-        students.add(new Student("Пирогов Николай Иванович", agma.getId(), 1, 0));
-        students.add(new Student("Мечников Илья Ильич", agma.getId(), 1, 0));
-
-        students.add(new Student("Дуров Павел Валерьевич", akvt.getId(), 1, 0));
-        students.add(new Student("Касперский Евгений Валентинович", akvt.getId(), 1, 0));
-        students.add(new Student("Марк Цукерберг", akvt.getId(), 1, 0));
-        students.add(new Student("Джеймс Гослинг", akvt.getId(), 1, 0));
-
-        for (Student student: students){
-            System.out.println(student);
-        }
+        System.out.println("СПИСОК УНИВЕРСИТЕТОВ");
+        universities.stream()
+                .sorted(ComparatorTool.getUniversityComparator(UniversityComparatorEnum.FULL_NAME))
+                .forEach(System.out::println);
+        System.out.println("СПИСОК СТУДЕНТОВ");
+        students.stream()
+                .sorted(ComparatorTool.getStudentComparator(StudentComparatorEnum.FULL_NAME))
+                .forEach(System.out::println);
     }
 }

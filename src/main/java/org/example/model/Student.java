@@ -1,4 +1,4 @@
-package org.example;
+package org.example.model;
 
 public class Student {
     String fullName, universityId;
@@ -52,7 +52,7 @@ public class Student {
     @Override
     public String toString() {
         return fullName +
-                "\n             учебное заведение: " + University.getById(universityId).toString() +
+                "\n             учебное заведение: " + (University.getById(universityId)!=null ? University.getById(universityId).toString() : "код " + universityId) +
                 "\n             курс - " + currentCourseNumber +
                 "\n             средний балл - " + avgExamScore ;
     }

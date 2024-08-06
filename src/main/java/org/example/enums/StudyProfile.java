@@ -1,8 +1,11 @@
-package org.example;
+package org.example.enums;
 
 public enum StudyProfile {
-    MEDICINE("Медицина"), PROGRAMMING("Астоматизированные системы обработки информации"),
-    TECHNIC ("Технический");
+    MEDICINE("Медицина"),
+    PHYSICS ("Физика"),
+    LINGUISTICS ("Лингвистика"),
+    MATHEMATICS ("Математика")
+    ;
     private String profileName;
 
     StudyProfile(String profileName) {

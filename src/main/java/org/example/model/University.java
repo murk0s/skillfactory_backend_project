@@ -1,4 +1,6 @@
-package org.example;
+package org.example.model;
+
+import org.example.enums.StudyProfile;
 
 import java.util.ArrayList;
 
@@ -67,7 +69,7 @@ public class University
 
     @Override
     public String toString() {
-        return fullName + "("
+        return fullName + " ("
                 + shortName +
                 ", код " + id +
                 ", основан в " + yearOfFoundation + "г." +
